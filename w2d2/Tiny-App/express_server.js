@@ -34,6 +34,14 @@ app.get("/urls", (req, res) => {
   res.render("urls_index", templateVars);
 });
 
+app.get("/urls/:id", (req, res) => {
+  const templateVars = {
+    shortURL: req.params.id,
+    fullURL: urlDatabase[req.params.id]
+  };
+  res.render("urls_show", templateVars);
+});
+
 app.post("/urls/shortURL/delete", (req, res) =>  {
   const inputVal = req.body.shortURL;
   delete(urlDatabase[inputVal]);
@@ -47,6 +55,12 @@ app.post("/urls/:shortID/delete", (req, res) =>  {
   res.redirect("/urls");
 });
 
+app.post("/urls/:id", (req, res)  =>  {
+  const newURL = req.body.newURL;
+  urlDatabase[req.params.id] = newURL;
+  res.redirect(`/urls/${req.params.id}`)
+})
+
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
@@ -57,13 +71,6 @@ app.post("/urls/create", (req, res) => {
   res.redirect(`/urls/${shortURL}`);
 });
 
-app.get("/urls/:id", (req, res) => {
-  const templateVars = {
-    shortURL: req.params.id,
-    fullURL: urlDatabase[req.params.id]
-  };
-  res.render("urls_show", templateVars);
-});
 
 app.get("/u/:shortURL", (req, res) => {
   let longURL = urlDatabase[req.params.shortURL];

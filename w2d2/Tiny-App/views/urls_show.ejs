@@ -5,20 +5,11 @@
 </head>
 <body>
   <% include ./partials/_headers %>
-  <ul>
-  <% for (let shortURL in urls)  { %>
-    <li><b>Full URL:</b> <%= urls[shortURL] %>
-        <b>Short URL: <%= shortURL %></b>
-    </li>
-
-
-  <b>Full URL:</b> <%= fullURL%>
-  <br>
-  <br>
-  <b>Short Url:</b> <%= shortURL%>
-  <br>
-  <form action="/urls/urls_show" method="POST" >
-    <label for="addURL">Add URL</label>
+  <h2 style="margin:100px"> Full URL: <%= fullURL %> </h2>
+  <h2 style="margin:100px"> Short URL: <%= shortURL %> </h2>
+  <form action="/urls/<%= shortURL %>" method="POST" style="margin:100px" style="height:200px">
+    <label for="addURL" style="margin-left:100px">Add New URL</label>
+    <input id="newURL" type="text" name="newURL" placeholder="http://" style="width:1000px">
     <input type="submit" value="Update">
   </form>
 </body>
