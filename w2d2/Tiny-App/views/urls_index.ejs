@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include ./partials/_headers %>
+
 <head>
   <title>TinyApp</title>
 </head>
 <body>
-  <ul>
-      <p>
-        <% for (let shortURL in urls)  { %>
-          <li>Full URL: <%= urls[shortURL] %><br>Short URL: <%= shortURL %></li>
-        <% } %>
-      </p>
-
-  </ul>
+<% include ./partials/_headers %>
+<ul>
+  <% for (let shortURL in urls)  { %>
+    <li>Full URL: <%= urls[shortURL] %>
+      Short URL: <%= shortURL %>
+    </li>
+    <form action="/urls/<%= shortURL %>/delete" method="POST" >
+      <label for="shortURL">Delete URL</label>
+      <input type="submit" value="Delete">
+    </form> <br>
+      <% } %>
+  </li>
+</ul>
+  <form action="/urls/shortURL/delete" method="POST" style="margin:100px;"">
+    <label for="shortURL"> Delete Short URL:</label>
+    <input id="shortURL" type="text" name="shortURL" placeholder="http://" style="width: 300px">
+    <input type="submit" value="Submit">
+  </form>
   <br>
   <br>
   <br>
   <br>
-  <h3><i><a href=""><b>Shorten New URL</b></a></i></h3>
+  <h3><i><a href="http://localhost:8080/urls/new"><b>Shorten New URL</b></a></i></h3>
 </body>
 </html>
+

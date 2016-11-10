@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body style="font-size:20px; padding:50px;">
+    <% include ./partials/_headers %>
+    <img src="http://images.huffingtonpost.com/2015-11-27-1448621966-2272308-PunnyandFunnyNamesforCats.jpg" alt="missing photo" style="width:500px;height:">
+    <form action="/urls/create" method="POST" style="margin:10px;">
+      <label for="longURL">Enter a URL:</label>
+      <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
